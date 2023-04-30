@@ -1,0 +1,16 @@
+#home_logo {
+    width: 60% !important;
+    padding-top: 200px !important;
+}
+
+#login_logo {
+    width: 30% !important;
+}
+
+a.nav-link {
+    color: #fff !important;
+}
+
+a.nav-link.active {
+    color: #000 !important;
+}
