@@ -6,8 +6,13 @@ import AddTeam from './components/AddTeam.vue'
 
 const routes = [
     {
+        name:'administrator',
+        path:'/administrator',
+        component: Home
+    },
+    {
         name:'home',
-        path:'/',
+        path:'/home',
         component: Home
     },
     {

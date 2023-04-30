@@ -8,7 +8,7 @@
                     <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <router-link to="/" class="nav-link active">
+                        <router-link to="/home" class="nav-link active">
                             <i class="nav-icon fas fa-home"></i>
                             Inicio
                         </router-link>
@@ -26,10 +26,10 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/sign_out" class="nav-link">
+                        <a :href="'/logout'" class="nav-link">
                             <i class="nav-icon fas fa-door-open"></i>
                             Salir
-                        </router-link>
+                        </a>
                     </li>
                 </ul>
             </nav>

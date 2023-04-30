@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckRol;
@@ -17,10 +18,9 @@ use App\Http\Controllers\OrganizatorController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
+Route::get('/', [AuthenticatedSessionController::class, 'create'])
+                ->name('login');
+                
 Route::middleware(['auth', 'checkrol:1'])->group(function () {
     Route::get('/administrator', [AdministratorController::class, 'index']);
 });
