@@ -5,8 +5,13 @@
     "src": "resources/css/app.css"
   },
   "resources/js/app.js": {
-    "file": "assets/app-e8e42fed.js",
+    "file": "assets/app-0fc6666a.js",
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/project/main.js": {
+    "file": "assets/main-eea7440b.js",
+    "isEntry": true,
+    "src": "resources/js/project/main.js"
   }
 }

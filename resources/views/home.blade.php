@@ -25,7 +25,7 @@
     
   </div>
   
-  @vite('resources/js/app.js')
+  @vite('resources/js/project/main.js')
 
   <!-- jQuery -->
   <script src="/template/plugins/jquery/jquery.min.js"></script>
