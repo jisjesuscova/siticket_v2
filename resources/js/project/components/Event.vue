@@ -5,7 +5,7 @@
                 <div class="row mb-2">
                     <div class="col-sm-6 margin-left">
                         <h1>
-                            Equipos
+                            Eventos
                         </h1>
                     </div>
                     <div class="col-sm-6">
@@ -28,13 +28,13 @@
                             <div class="card-body">
                                 <o-table :loading="isLoading" :data="posts.current_page && posts.data.length == 0 ? [] : posts.data">
                                     <o-table-column field="id" label="Id" numeric v-slot="p">
-                                        {{ p.row.id }}
+       
                                     </o-table-column>
-                                    <o-table-column field="user.name" label="Organizador" v-slot="p">
-                                        {{ p.row.user.name }}
+                                    <o-table-column field="" label="Nombre del Evento" v-slot="p">
+}
                                     </o-table-column>
-                                    <o-table-column field="team_name" label="Equipo" v-slot="p">
-                                        {{ p.row.team_name }}
+                                    <o-table-column field="" label="N° de Entradas" v-slot="p">
+                        
                                     </o-table-column>
                                     <o-table-column field="" label="" v-slot="p">
                                         <o-button variant="danger" v-if="p.row.id != 1" @click="deleteTeam(p.row.id)">

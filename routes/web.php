@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckRol;
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\OrganizatorController;
+use app\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,19 +21,43 @@ use App\Http\Controllers\OrganizatorController;
 
 Route::get('/', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
+
+Route::get('/user_id', function () {
+    return response()->json(['user_id' => auth()->id()]);
+});
+
+Route::get('/session-data', function () {
+    return response()->json(auth()->user());
+});
                 
 Route::middleware(['auth', 'checkrol:1'])->group(function () {
+    Route::get('/team', function () {
+        return view('home');
+    });
+
+    Route::get('/add_team', function () {
+        return view('home');
+    });
+
+    Route::get('/setting', function () {
+        return view('home');
+    });
+
+    Route::get('/home', [HomeController::class, 'index']);
     Route::get('/administrator', [AdministratorController::class, 'index']);
 });
 
 Route::middleware(['auth', 'checkrol:2'])->group(function () {
-    Route::get('/organizator', [OrganizatorController::class, 'index']);
-});
+    Route::get('/setting', function () {
+        return view('home');
+    });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/event', function () {
+        return view('home');
+    });
+
+    Route::get('/home', [HomeController::class, 'index']);
+    Route::get('/organizator', [OrganizatorController::class, 'index']);
 });
 
 require __DIR__.'/auth.php';
