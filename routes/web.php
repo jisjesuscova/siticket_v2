@@ -46,8 +46,7 @@ Route::middleware(['auth', 'checkrol:1'])->group(function () {
     Route::get('/setting', function () {
         return view('home');
     });
-
-    Route::get('/home', [HomeController::class, 'index']);
+    
     Route::get('/administrator', [AdministratorController::class, 'index']);
 });
 
@@ -60,7 +59,6 @@ Route::middleware(['auth', 'checkrol:2'])->group(function () {
         return view('home');
     });
 
-    Route::get('/home', [HomeController::class, 'index']);
     Route::get('/organizator', [OrganizatorController::class, 'index']);
 });
 
