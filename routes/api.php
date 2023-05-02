@@ -17,8 +17,7 @@ use App\Http\Controllers\Api\UserController;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::resource('team', TeamController::class)->except(['create', 'edit']);
-    
 });
 
+Route::resource('team', TeamController::class)->except(['create', 'edit']);
 Route::resource('user', UserController::class)->except(['create', 'edit']);
