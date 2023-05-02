@@ -7,28 +7,24 @@
                     <div class="col-lg-12">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Agregar Equipo</h3>
+                                <h3 class="card-title">Editar Perfil</h3>
                             </div>
                             <form @submit.prevent="submit">
                                 <div class="card-body">
-                                    <o-field label="Nombre del Equipo" :variant="errors.team_name ? 'danger' : 'primary'" :message="errors.team_name">
-                                        <o-input type="text" v-model="form.team_name" model-value="" maxlength="100"> </o-input>
-                                    </o-field>
-                                    <o-field label="Nombre del Organizador" :variant="errors.name ? 'danger' : 'primary'" :message="errors.name">
-                                        <o-input type="text" v-model="form.name" model-value="" maxlength="100"> </o-input>
-                                    </o-field>
-                                    <o-field label="Correo del Organizador" :variant="errors.email ? 'danger' : 'primary'" :message="errors.email">
+                                    <o-field label="Correo" :variant="errors.email ? 'danger' : 'primary'" :message="errors.email">
                                         <o-input type="email" v-model="form.email" model-value="" maxlength="100"> </o-input>
                                     </o-field>
-                                    <o-field label="Contraseña del Organizador" :variant="errors.password ? 'danger' : 'primary'" :message="errors.password">
+                                    <o-field label="Nueva Contraseña" :variant="errors.password ? 'danger' : 'primary'" :message="errors.password">
                                         <o-input type="password" v-model="form.password" model-value="" maxlength="100"> </o-input>
                                     </o-field>
                                 </div>
-
+                                <b-field type="hidden" label="Campo oculto">
+                                    <input v-model="form.id" type="hidden">
+                                </b-field>
                                 <div class="card-footer">
                                     <o-field
                                     ><!-- Label left empty for spacing -->
-                                        <o-button variant="success" native-type="submit"> Guardar </o-button>
+                                        <o-button variant="success" native-type="submit"> Actualizar </o-button>
                                     </o-field>
                                 </div>
                             </form>
@@ -45,35 +41,28 @@ export default {
     data() {
         return {
             form: {
-                team_name: '',
-                name: '',
+                id: '',
                 email: '',
                 password: ''
             },
             errors: {
-                team_name: '',
-                name: '',
+                id: '',
                 email: '',
                 password: ''
             }
         }
     },
+    mounted() {
+        this.getUser();
+    },
     methods: {
         submit() {
-            this.$axios.post('/api/team', this.form)
+            this.$axios.put('/api/user/' + this.form.id, this.form)
                 .then(response => {
-                    this.$router.push('/team')
+                    this.$router.push('/setting')
                 })
                 .catch(error => {
                     console.log(error.response.data)
-
-                    if(error.response.data.team_name) {
-                        this.errors.team_name = error.response.data.team_name[0]
-                    }
-
-                    if(error.response.data.name) {
-                        this.errors.name = error.response.data.name[0]
-                    }
 
                     if(error.response.data.email) {
                         this.errors.email = error.response.data.email[0]
@@ -84,16 +73,20 @@ export default {
                     }
                 })
         },
-        getUser() {
-            this.$axios.get('/api/user')
-                .then(response => {
-                    console.log(response.data.name)
-                    this.form.name = response.data.name
-                    this.form.email = response.data.email
-                })
-                .catch(error => {
-                    console.log(error.response.data)
-                })
+        async getUser() {
+            try {
+                // Obtén el ID de sesión de Laravel
+                const UserIdResponse = await this.$axios.get('/user_id');
+                const userId = UserIdResponse.data.user_id;
+
+                // Realiza la solicitud para obtener los datos del usuario
+                const userResponse = await this.$axios.get('/api/user/' + userId);
+                this.form.id = userId;
+                this.form.email = userResponse.data.data.email;
+                this.form.password = userResponse.data.data.password;
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
 }

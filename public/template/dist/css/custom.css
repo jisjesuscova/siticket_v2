@@ -14,3 +14,10 @@ a.nav-link {
 a.nav-link.active {
     color: #000 !important;
 }
+
+.o-pag__link--current {
+    pointer-events: none;
+    background-color: #000 !important;
+    border-color: #000 !important;
+    color: #fff;
+}

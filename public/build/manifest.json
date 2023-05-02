@@ -1,4 +1,20 @@
 {
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot": {
+    "file": "assets/materialdesignicons-webfont-67d24abe.eot",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot"
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf": {
+    "file": "assets/materialdesignicons-webfont-a58ecb54.ttf",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf"
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff": {
+    "file": "assets/materialdesignicons-webfont-80bb28b3.woff",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff"
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2": {
+    "file": "assets/materialdesignicons-webfont-c1c004a9.woff2",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2"
+  },
   "resources/css/app.css": {
     "file": "assets/app-f38d9559.css",
     "isEntry": true,
@@ -9,8 +25,21 @@
     "isEntry": true,
     "src": "resources/js/app.js"
   },
+  "resources/js/project/main.css": {
+    "file": "assets/main-ef66f8c4.css",
+    "src": "resources/js/project/main.css"
+  },
   "resources/js/project/main.js": {
-    "file": "assets/main-1468a4ff.js",
+    "assets": [
+      "assets/materialdesignicons-webfont-67d24abe.eot",
+      "assets/materialdesignicons-webfont-c1c004a9.woff2",
+      "assets/materialdesignicons-webfont-80bb28b3.woff",
+      "assets/materialdesignicons-webfont-a58ecb54.ttf"
+    ],
+    "css": [
+      "assets/main-ef66f8c4.css"
+    ],
+    "file": "assets/main-da413be4.js",
     "isEntry": true,
     "src": "resources/js/project/main.js"
   }

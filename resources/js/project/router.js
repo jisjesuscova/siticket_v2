@@ -1,13 +1,29 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from './components/Home.vue'
 import Team from './components/Team.vue'
-import Profile from './components/Profile.vue'
+import Setting from './components/Setting.vue'
 import AddTeam from './components/AddTeam.vue'
+import Event from './components/Event.vue'
 
 const routes = [
     {
+        name:'administrator',
+        path:'/administrator',
+        component: Home
+    },
+    {
+        name:'organizator',
+        path:'/organizator',
+        component: Home
+    },
+    {
+        name:'event',
+        path:'/event',
+        component: Event
+    },
+    {
         name:'home',
-        path:'/',
+        path:'/home',
         component: Home
     },
     {
@@ -16,9 +32,9 @@ const routes = [
         component: Team
     },
     {
-        name:'profile',
-        path:'/profile',
-        component: Profile
+        name:'setting',
+        path:'/setting',
+        component: Setting
     },
     {
         name:'add_team',

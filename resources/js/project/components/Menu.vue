@@ -8,28 +8,34 @@
                     <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <router-link to="/" class="nav-link active">
+                        <router-link to="/home" class="nav-link active">
                             <i class="nav-icon fas fa-home"></i>
                             Inicio
                         </router-link>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" v-if="rol_id == 1">
                         <router-link to="/team" class="nav-link">
                             <i class="nav-icon fas fa-people-group"></i>
                             Equipos
                         </router-link>
                     </li>
+                    <li class="nav-item" v-if="rol_id == 2">
+                        <router-link to="/event" class="nav-link">
+                            <i class="nav-icon far fa-calendar-days"></i>
+                            Eventos
+                        </router-link>
+                    </li>
                     <li class="nav-item">
-                        <router-link to="/profile" class="nav-link">
+                        <router-link to="/setting" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             Perfil
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/sign_out" class="nav-link">
+                        <a :href="'/logout'" class="nav-link">
                             <i class="nav-icon fas fa-door-open"></i>
                             Salir
-                        </router-link>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -38,11 +44,24 @@
         <!-- /.sidebar -->
     </div>
   </template>
-  
-  <script>
-  
-  export default {
-    components: {
+
+<script>
+import axios from 'axios';
+
+export default {
+    data() {
+        return {
+            rol_id: ''
+        }
+    },
+    mounted() {
+        axios.get('/session-data')
+        .then(response => {
+            this.rol_id = response.data.rol_id;
+        })
+        .catch(error => {
+            console.log(error);
+        });
     }
-  }
-  </script>
+}
+</script>
