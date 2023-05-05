@@ -20,9 +20,9 @@
                                     <o-field label="Fecha del Evento" :variant="errors.event_date ? 'danger' : 'primary'" :message="errors.event_date">
                                         <o-input type="date" v-model="form.event_date" model-value="" maxlength="100"> </o-input>
                                     </o-field>
-                                    <o-field label="ID del usuario" hide-label>
-                                        <o-input type="text" v-model="form.id" model-value=""></o-input>
-                                    </o-field>
+                                    <b-field type="hidden" label="Campo oculto">
+                                        <input v-model="form.id" type="hidden">
+                                    </b-field>
                                 </div>
 
                                 <div class="card-footer">
@@ -57,6 +57,9 @@ export default {
             }
         }
     },
+    mounted() {
+        this.getUser();
+    },
     methods: {
         submit() {
             this.$axios.post('/api/event', this.form)
@@ -79,17 +82,20 @@ export default {
                     }
                 })
         },
-        getUser() {
-            this.$axios.get('/api/user')
-                .then(response => {
-                    console.log(response.data.name)
-                    this.form.id = response.data.id
-                    this.form.name = response.data.name
-                    this.form.email = response.data.email
-                })
-                .catch(error => {
-                    console.log(error.response.data)
-                })
+        async getUser() {
+            try {
+                const UserIdResponse = await this.$axios.get('/user_id');
+                const userId = UserIdResponse.data.user_id;
+
+                // Realiza la solicitud para obtener los datos del usuario
+                const userResponse = await this.$axios.get('/api/user/' + userId);
+
+                this.form.id = userId;
+                this.form.email = userResponse.data.data.email;
+                this.form.password = userResponse.data.data.password;
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
 }

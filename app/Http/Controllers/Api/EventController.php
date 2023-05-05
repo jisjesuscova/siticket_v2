@@ -39,7 +39,7 @@ class EventController extends Controller
     public function store(StoreEventRequest $request)
     {
         $event = Event::create([
-            'organizator_id' => Auth::id(),
+            'organizator_id' => $request->id,
             'event_name' => $request->event_name,
             'ticket_quantity' => $request->ticket_quantity,
             'event_date' => $request->event_date
