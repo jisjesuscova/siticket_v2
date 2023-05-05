@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreEventRequest;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -38,7 +39,7 @@ class EventController extends Controller
     public function store(StoreEventRequest $request)
     {
         $event = Event::create([
-            'organizator_id' => auth()->user()->id,
+            'organizator_id' => Auth::id(),
             'event_name' => $request->event_name,
             'ticket_quantity' => $request->ticket_quantity,
             'event_date' => $request->event_date
