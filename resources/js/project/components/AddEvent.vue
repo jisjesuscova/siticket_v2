@@ -20,7 +20,9 @@
                                     <o-field label="Fecha del Evento" :variant="errors.event_date ? 'danger' : 'primary'" :message="errors.event_date">
                                         <o-input type="date" v-model="form.event_date" model-value="" maxlength="100"> </o-input>
                                     </o-field>
-                                    <input type="" name="user_id" value="{{ auth()->user()->id }}">
+                                    <o-field label="ID del usuario" hide-label>
+                                        <o-input type="text" v-model="form.id" model-value=""></o-input>
+                                    </o-field>
                                 </div>
 
                                 <div class="card-footer">
@@ -43,6 +45,7 @@ export default {
     data() {
         return {
             form: {
+                id: '',
                 event_name: '',
                 ticket_quantity: '',
                 event_date: ''
@@ -80,6 +83,7 @@ export default {
             this.$axios.get('/api/user')
                 .then(response => {
                     console.log(response.data.name)
+                    this.form.name = response.data.id
                     this.form.name = response.data.name
                     this.form.email = response.data.email
                 })
