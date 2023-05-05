@@ -83,7 +83,7 @@ export default {
             this.$axios.get('/api/user')
                 .then(response => {
                     console.log(response.data.name)
-                    this.form.name = response.data.id
+                    this.form.id = response.data.id
                     this.form.name = response.data.name
                     this.form.email = response.data.email
                 })
