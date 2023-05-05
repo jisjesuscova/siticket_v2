@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\TeamController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\EventController;
+use App\Http\Controllers\Api\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::resource('team', TeamController::class)->except(['create', 'edit']);
 Route::resource('user', UserController::class)->except(['create', 'edit']);
+Route::resource('event', EventController::class)->except(['create', 'edit']);
+Route::resource('ticket', TicketController::class)->except(['create', 'edit']);

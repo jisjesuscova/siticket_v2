@@ -4,12 +4,20 @@ import Team from './components/Team.vue'
 import Setting from './components/Setting.vue'
 import AddTeam from './components/AddTeam.vue'
 import Event from './components/Event.vue'
+import AddEvent from './components/AddEvent.vue'
+import ShowTicket from './components/ShowTicket.vue'
+import Ticket from './components/Ticket.vue'
 
 const routes = [
     {
         name:'administrator',
         path:'/administrator',
         component: Home
+    },
+    {
+        name:'show_ticket_token',
+        path:'/show_ticket/token',
+        component: ShowTicket
     },
     {
         name:'organizator',
@@ -40,6 +48,16 @@ const routes = [
         name:'add_team',
         path:'/add_team',
         component: AddTeam
+    },
+    {
+        name:'add_event',
+        path:'/add_event',
+        component: AddEvent
+    },
+    {
+        name:'ticket',
+        path:'/ticket/:id',
+        component: Ticket
     }
 ]
 

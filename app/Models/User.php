@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Team::class);
     }
+
+    public function events()
+    {
+        return $this->hasMany(Organizator::class);
+    }
 }

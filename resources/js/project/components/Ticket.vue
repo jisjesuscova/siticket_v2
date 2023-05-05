@@ -5,15 +5,8 @@
                 <div class="row mb-2">
                     <div class="col-sm-6 margin-left">
                         <h1>
-                            Eventos
+                            Entradas
                         </h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active">
-                                <router-link to="/add_event" class="btn btn-block btn-success">Agregar</router-link>
-                            </li>
-                        </ol>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -33,20 +26,11 @@
                                     <o-table-column field="event_name" label="Nombre del Evento" v-slot="p">
                                         {{ p.row.event_name }}  
                                     </o-table-column>
-                                    <o-table-column field="ticket_quantity" label="N° de Entradas" v-slot="p">
-                                        {{ p.row.ticket_quantity }}
-                                    </o-table-column>
-                                    <o-table-column field="event_date" label="Fecha del Evento" v-slot="p">
-                                        {{ p.row.event_date }}
-                                    </o-table-column>
                                     <o-table-column field="" label="" v-slot="p">
                                         <div class="btn-group">
-                                            <router-link :to="`/ticket/${p.row.id}`" class="btn btn-success mr-2">
-                                                <i class="fa-solid fa-eye"></i>
-                                            </router-link>
-                                            <o-button variant="danger" @click="deleteEvent(p.row.id)">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </o-button>
+                                            <a :href="`/pdf/${p.row.id}`" class="btn btn-success mr-2">
+                                                <i class="fa-solid fa-arrow-down"></i>
+                                            </a>
                                         </div>
                                     </o-table-column>
                                 </o-table>
@@ -89,14 +73,9 @@ export default {
         },
         listPage() {
             this.isLoading = true;
-            this.$axios.get('api/event?page='+this.currentPage).then((res) => {
+            this.$axios.get('/api/ticket/'+ this.$route.params.id +'?page='+this.currentPage).then((res) => {
                 this.posts = res.data.data;
                 this.isLoading = false;
-            })
-        },
-        deleteEvent(id) {
-            this.$axios.delete('api/event/'+id).then((res) => {
-                this.listPage();
             })
         }
     },

@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckRol;
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\OrganizatorController;
-use app\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,12 @@ Route::get('/session-data', function () {
 Route::get('/home', function () {
     return view('home');
 });
+
+Route::get('/show_ticket/{token}', function () {
+    return view('home');
+});
+
+Route::get('/pdf/{id}', [PdfController::class, 'generatePdf']);
                 
 Route::middleware(['auth', 'checkrol:1'])->group(function () {
     Route::get('/team', function () {
@@ -56,6 +63,10 @@ Route::middleware(['auth', 'checkrol:2'])->group(function () {
     });
 
     Route::get('/event', function () {
+        return view('home');
+    });
+
+    Route::get('/add_event', function () {
         return view('home');
     });
 
