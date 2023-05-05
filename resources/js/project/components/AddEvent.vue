@@ -20,6 +20,7 @@
                                     <o-field label="Fecha del Evento" :variant="errors.event_date ? 'danger' : 'primary'" :message="errors.event_date">
                                         <o-input type="date" v-model="form.event_date" model-value="" maxlength="100"> </o-input>
                                     </o-field>
+                                    <input type="" name="user_id" value="{{ auth()->user()->id }}">
                                 </div>
 
                                 <div class="card-footer">
