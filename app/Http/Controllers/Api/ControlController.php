@@ -69,7 +69,7 @@ class ControlController extends Controller
     /**
      * Show if the control user has the resources to accept the ticket.
      */
-    public function validate(Request $request)
+    public function validate($id)
     {
         return response()->json([
             'success' => true,
