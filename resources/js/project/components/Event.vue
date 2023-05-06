@@ -87,9 +87,9 @@ export default {
         updatePage() {
             setTimeout(this.listPage, 200);
         },
-        listPage() {
+        listPage(id) {
             this.isLoading = true;
-            this.$axios.get('api/event?page='+this.currentPage).then((res) => {
+            this.$axios.get('api/event/'+ id +'?page='+this.currentPage).then((res) => {
                 this.posts = res.data.data;
                 this.isLoading = false;
             })
@@ -101,7 +101,14 @@ export default {
         }
     },
     async mounted() {
-        this.listPage();
+        axios.get('/session-data')
+        .then(response => {
+            this.id = response.data.id;
+            this.listPage(this.id); // pasa this.id a listPage()
+        })
+        .catch(error => {
+            console.log(error);
+        });
     }
 }
 </script>

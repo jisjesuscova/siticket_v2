@@ -8,6 +8,7 @@ use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\OrganizatorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\SecurityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,7 +71,27 @@ Route::middleware(['auth', 'checkrol:2'])->group(function () {
         return view('home');
     });
 
+    Route::get('/control', function () {
+        return view('home');
+    });
+
+    Route::get('/add_control', function () {
+        return view('home');
+    });
+
     Route::get('/organizator', [OrganizatorController::class, 'index']);
+});
+
+Route::middleware(['auth', 'checkrol:3'])->group(function () {
+    Route::get('/setting', function () {
+        return view('home');
+    });
+
+    Route::get('/qr_code', function () {
+        return view('home');
+    });
+
+    Route::get('/security', [SecurityController::class, 'index']);
 });
 
 require __DIR__.'/auth.php';

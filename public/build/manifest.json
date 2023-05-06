@@ -26,7 +26,7 @@
     "src": "resources/js/app.js"
   },
   "resources/js/project/main.css": {
-    "file": "assets/main-ef66f8c4.css",
+    "file": "assets/main-8088e45e.css",
     "src": "resources/js/project/main.css"
   },
   "resources/js/project/main.js": {
@@ -37,9 +37,9 @@
       "assets/materialdesignicons-webfont-a58ecb54.ttf"
     ],
     "css": [
-      "assets/main-ef66f8c4.css"
+      "assets/main-8088e45e.css"
     ],
-    "file": "assets/main-c36f4b23.js",
+    "file": "assets/main-1cbbcccc.js",
     "isEntry": true,
     "src": "resources/js/project/main.js"
   }

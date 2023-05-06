@@ -23,6 +23,8 @@ class RouteServiceProvider extends ServiceProvider
 
     public const ORGANIZATOR_HOME = '/organizator';
 
+    public const SECURITY_HOME = '/security';
+
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */

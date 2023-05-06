@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\TeamController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\TicketController;
+use App\Http\Controllers\Api\ControlController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,5 @@ Route::resource('team', TeamController::class)->except(['create', 'edit']);
 Route::resource('user', UserController::class)->except(['create', 'edit']);
 Route::resource('event', EventController::class)->except(['create', 'edit']);
 Route::resource('ticket', TicketController::class)->except(['create', 'edit']);
+Route::resource('control', ControlController::class)->except(['create', 'edit']);
+Route::get('event/all/{id}', 'App\Http\Controllers\Api\EventController@index');

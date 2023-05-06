@@ -35,6 +35,8 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended(RouteServiceProvider::ADMINISTRATOR_HOME);
         } else if ($user->rol_id == 2) {
             return redirect()->intended(RouteServiceProvider::ORGANIZATOR_HOME);
+        } else if ($user->rol_id == 3) {
+            return redirect()->intended(RouteServiceProvider::SECURITY_HOME);
         }
     
         return redirect()->intended(RouteServiceProvider::HOME);

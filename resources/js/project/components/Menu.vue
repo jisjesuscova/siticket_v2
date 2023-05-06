@@ -25,6 +25,18 @@
                             Eventos
                         </router-link>
                     </li>
+                    <li class="nav-item" v-if="rol_id == 2">
+                        <router-link to="/control" class="nav-link">
+                            <i class="nav-icon fas fa-lock"></i>
+                            Controladores
+                        </router-link>
+                    </li>
+                    <li class="nav-item" v-if="rol_id == 3">
+                        <router-link to="/qr_code" class="nav-link">
+                            <i class="nav-icon fas fa-qrcode"></i>
+                            Lector
+                        </router-link>
+                    </li>
                     <li class="nav-item">
                         <router-link to="/setting" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>

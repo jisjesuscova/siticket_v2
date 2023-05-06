@@ -8,7 +8,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/85a1c8a277.js" crossorigin="anonymous"></script>
+  <script src="/template/plugins/fontawesome-free-6.4.0-web/js/all.js" crossorigin="anonymous"></script>
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="/template/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->

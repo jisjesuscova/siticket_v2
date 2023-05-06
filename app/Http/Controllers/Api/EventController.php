@@ -14,10 +14,12 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $events = Event::orderByDesc('id')
-             ->paginate(10);
+        $id = $request->segment(4);
+        
+        $events = Event::where('organizator_id', '=', $id)->orderByDesc('id')
+             ->get();
 
         return response()->json([
             'success' => true,
@@ -62,9 +64,15 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Event $event)
+    public function show($id)
     {
-        //
+        $events = Event::where('organizator_id', '=', $id)->orderByDesc('id')
+             ->paginate(10);
+
+        return response()->json([
+            'success' => true,
+            'data' => $events
+        ], 200);
     }
 
     /**
@@ -88,6 +96,11 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+
+        return response()->json([
+            'success' => true,
+            'data' => $event
+        ], 200);
     }
 }
