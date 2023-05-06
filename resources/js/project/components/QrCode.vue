@@ -38,12 +38,17 @@ export default defineComponent({
         const result = ref(null);
   
         function onDecode(data) {
-            console.log(data)
             result.value = data;
+
+            validateControler(data);
         }
 
-        function showSetupValues() {
-            console.log(result.value);
+        async function validateControler(data) {
+            try {
+                console.log('1');
+            } catch (error) {
+                console.log(error);
+            }
         }
   
         return {
