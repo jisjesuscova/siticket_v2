@@ -40,7 +40,7 @@ export default defineComponent({
 
     async function validateControler(id) {
       try {
-        const response = await axios.get(`api/control/validate/${id}`);
+        const response = await axios.get(`api/control/status/${id}`);
         result.value = response.data;
         console.log(response.data);
       } catch (error) {
