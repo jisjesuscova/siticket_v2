@@ -38,6 +38,8 @@ export default defineComponent({
         const result = ref(null);
   
         function onDecode(data) {
+            var status = this.validateControler(this.id);
+            alert(status)
             result.value = data;
         }
   
@@ -46,6 +48,22 @@ export default defineComponent({
             onDecode,
         };
     },
+    methods: {
+        validateControler(id) {
+            this.$axios.get('api/control/validate/'+id).then((res) => {
+                return res.data;
+            })
+        }
+    },
+    async mounted() {
+        axios.get('/session-data')
+        .then(response => {
+            this.id = response.data.id;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
 });
 </script>
   

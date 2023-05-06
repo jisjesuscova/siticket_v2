@@ -67,6 +67,17 @@ class ControlController extends Controller
     }
 
     /**
+     * Show if the control user has the resources to accept the ticket.
+     */
+    public function validate(Request $request)
+    {
+        return response()->json([
+            'success' => true,
+            'data' => 1
+        ], 200);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Control $control)

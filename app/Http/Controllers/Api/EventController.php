@@ -51,7 +51,7 @@ class EventController extends Controller
             $ticket = Ticket::create([
                 'event_id' => $event->id,
                 'status_id' => 0,
-                'token' => md5('siticket'.$event->id)
+                'token' => md5(rand(1, 1000000) . 'siticket'.$event->id)
             ]);
         }
 
