@@ -21,3 +21,7 @@ a.nav-link.active {
     border-color: #000 !important;
     color: #fff;
 }
+
+a.bar-code {
+    color: #000 !important;
+}

@@ -1,5 +1,7 @@
 <template>
     <div>
+        
+        <!-- /.navbar -->
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar Menu -->
