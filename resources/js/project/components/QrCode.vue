@@ -33,41 +33,42 @@
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-    name: 'QrCode',
-    setup() {
-        const result = ref(null);
-  
-        function onDecode(data) {
-            result.value = data;
+  name: 'QrCode',
+  setup() {
+    const result = ref(null);
+    const idRef = ref(null);
 
-            validateControler(data);
-        }
+    async function validateControler(id) {
+      try {
+        const response = await axios.get(`api/control/validate/${id}`);
+        result.value = response.data;
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
-        async function validateControler(data) {
-            try {
-                console.log('1');
-            } catch (error) {
-                console.log(error);
-            }
-        }
-  
-        return {
-            result,
-            onDecode,
-        };
-    },
-    async mounted() {
-        axios.get('/session-data')
+    function onDecode(data) {
+      result.value = data;
+      validateControler(idRef.value);
+    }
+
+    axios.get('/session-data')
         .then(response => {
-            this.id = response.data.id;
+            idRef.value = response.data.id;
         })
         .catch(error => {
             console.log(error);
         });
-    }
+
+    return {
+      result,
+      onDecode,
+    };
+  },
 });
 </script>
-  
+
 <style>
 .qr-reader {
     width: 100%;
