@@ -38,14 +38,12 @@ export default defineComponent({
     const result = ref(null);
     const idRef = ref(null);
 
-    async function validateControler(id, data) {
+    async function validateControler(id, value) {
       try {
         const response = await axios.get(`api/control/status/${id}`);
-        result.value = response.data;
-        console.log(response.data);
-        
-        if (response.data)  {
-            alert(data);
+
+        if (response.data == 1)  {
+            this.$router.push('/show_ticket/' + value);
         } else {
             alert('Usted no tiene los permisos para validar la entrada');
         }
@@ -56,7 +54,7 @@ export default defineComponent({
 
     function onDecode(data) {
       result.value = data;
-      validateControler(idRef.value, data);
+      validateControler(idRef.value, value);
     }
 
     axios.get('/session-data')

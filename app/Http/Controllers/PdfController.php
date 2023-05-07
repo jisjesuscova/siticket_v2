@@ -26,7 +26,7 @@ class PdfController extends Controller
         $ticket_number = $ticket->id;
 
         $qrCode = QrCode::size(200)
-                  ->generate(url('/show_ticket/' . $ticket->token));
+                  ->generate($ticket->token);
 
         $pdf = PDF::loadView('pdfs.ticket', compact('title', 'event_date', 'ticket_number', 'qrCode'));
 
