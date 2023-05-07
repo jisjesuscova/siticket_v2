@@ -54,7 +54,7 @@ export default defineComponent({
 
     function onDecode(data) {
       result.value = data;
-      validateControler(idRef.value, value);
+      validateControler(idRef.value, data);
     }
 
     axios.get('/session-data')
