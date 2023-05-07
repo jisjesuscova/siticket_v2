@@ -43,7 +43,7 @@ export default defineComponent({
         const response = await axios.get(`api/control/status/${id}`);
         console.log(response.data);
         if (response.data.data == 1)  {
-            this.$router.push('/show_ticket/' + value);
+            window.location.href = "https://jesuscova.cl/show_ticket/" + value;
         } else {
             alert('Usted no tiene los permisos para validar la entrada');
         }
