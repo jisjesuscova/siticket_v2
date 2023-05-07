@@ -42,7 +42,7 @@ export default {
     },
     methods: {
         checkTicket() {
-            this.$axios.delete('api/ticket/check/'+ this.$route.params.id).then((res) => {
+            this.$axios.get('/api/ticket/check/'+ this.$route.params.id).then((res) => {
                 this.status = res.data.data;
                 console.log(this_status);
             })
