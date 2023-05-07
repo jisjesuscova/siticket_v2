@@ -71,9 +71,9 @@ class ControlController extends Controller
      */
     public function status(Request $request)
     {
-        $id = $request->segment(3);
+        $id = $request->segment(4);
 
-        $control_event = ControlEvent::where('cntrol_id', '=', $id)->count();
+        $control_event = ControlEvent::where('control_id', '=', $id)->count();
 
         if ($control_event == 0) {
             return response()->json([
