@@ -71,10 +71,21 @@ class ControlController extends Controller
      */
     public function status(Request $request)
     {
-        return response()->json([
-            'success' => true,
-            'data' => 1
-        ], 200);
+        $id = $request->segment(3);
+
+        $control_event = ControlEvent::where('control_id', '=', $id)->count();
+
+        if ($control_event == 0) {
+            return response()->json([
+                'success' => true,
+                'data' => 0
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => true,
+                'data' => 1
+            ], 200);
+        }
     }
 
     /**
