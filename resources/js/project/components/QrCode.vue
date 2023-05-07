@@ -42,7 +42,7 @@ export default defineComponent({
       try {
         const response = await axios.get(`api/control/status/${id}`);
         console.log(response.data);
-        if (response.data == 1)  {
+        if (response.data.data == 1)  {
             this.$router.push('/show_ticket/' + value);
         } else {
             alert('Usted no tiene los permisos para validar la entrada');
