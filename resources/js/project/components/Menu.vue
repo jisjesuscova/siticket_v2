@@ -69,6 +69,10 @@ export default {
         }
     },
     mounted() {
+        const body = document.querySelector('body');
+        body.classList.add('sidebar-mini');
+        body.classList.add('sidebar-collapse');
+
         axios.get('/session-data')
         .then(response => {
             this.rol_id = response.data.rol_id;
