@@ -37,7 +37,7 @@
                                         {{ p.row.ticket_quantity }}
                                     </o-table-column>
                                     <o-table-column field="event_date" label="Fecha del Evento" v-slot="p">
-                                        {{ p.row.event_date }}
+                                        {{ formatDate(p.row.event_date) }}
                                     </o-table-column>
                                     <o-table-column field="" label="" v-slot="p">
                                         <div class="btn-group">
@@ -109,6 +109,11 @@ export default {
                     console.log(error);
                 });
             }
+        },
+        formatDate(date) {
+            if (!date) return null;
+            const [year, month, day] = date.split('-');
+            return `${day}-${month}-${year}`;
         }
     },
     async mounted() {
