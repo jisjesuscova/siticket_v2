@@ -60,7 +60,7 @@ class TicketController extends Controller
 
         $ticket_qty = Ticket::where('token', '=', $id)->where('status_id', '=', 0)->count();
 
-        if ($ticket_qty > 1) {
+        if ($ticket_qty >= 1) {
             $ticket = Ticket::where('token', $id)->where('status_id', '=', 0)->first();
             $ticket->status_id = 1;
             $ticket->save();
