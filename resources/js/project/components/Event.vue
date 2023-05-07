@@ -97,8 +97,17 @@ export default {
         deleteEvent(id) {
             if (confirm("¿Estás seguro de que deseas eliminar el registro?")) {
                 this.$axios.delete('api/event/'+id).then((res) => {
-                    this.listPage();
+                    
+                });
+
+                axios.get('/session-data')
+                .then(response => {
+                    this.id = response.data.id;
+                    this.listPage(this.id); // pasa this.id a listPage()
                 })
+                .catch(error => {
+                    console.log(error);
+                });
             }
         }
     },
