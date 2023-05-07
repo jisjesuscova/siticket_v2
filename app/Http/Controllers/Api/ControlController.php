@@ -42,7 +42,8 @@ class ControlController extends Controller
 
         $control_event = ControlEvent::create([
             'control_id' => $control->id,
-            'event_id' => $request->event_id
+            'event_id' => $request->event_id,
+            'status_id' => 1
         ]);
 
         return response()->json([
@@ -78,7 +79,7 @@ class ControlController extends Controller
     {
         $id = $request->segment(4);
 
-        $control_event = ControlEvent::where('control_id', '=', $id)->count();
+        $control_event = ControlEvent::where('control_id', '=', $id)->where('status_id', '=', 1)->count();
 
         if ($control_event == 0) {
             return response()->json([
