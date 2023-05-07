@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use PhpOffice\PhpSpreadsheet\Worksheet\MemoryDrawing;
 use App\Models\Ticket;
+use App\Models\Event;
 
 class ExcelController extends Controller
 {
