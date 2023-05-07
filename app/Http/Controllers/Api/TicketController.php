@@ -57,9 +57,9 @@ class TicketController extends Controller
     public function check(Request $request)
     {
         $id = $request->segment(3);
-
-        $ticket_qty = Ticket::where('token', $id)->where('status_id', '=', 0)->count();
-
+        echo $id;
+        $ticket_qty = Ticket::where('token', '=', $id)->where('status_id', '=', 0)->count();
+        echo $ticket_qty;
         if ($ticket_qty > 1) {
             $ticket = Ticket::where('token', $id)->where('status_id', '=', 0)->first();
             $ticket->status_id = 1;
