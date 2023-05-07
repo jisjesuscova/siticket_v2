@@ -12,13 +12,13 @@ use App\Models\Ticket;
 
 class ExcelController extends Controller
 {
-    public function generateExcel()
+    public function generateExcel($id)
     {
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
         // Obtén los tickets desde la base de datos (ajusta la consulta según tus necesidades)
-        $tickets = Ticket::all();
+        $tickets = Ticket::where('event_id', '=', $id)->get();
 
         // Recorre los tickets e inserta el código QR en cada fila
         $row = 1;

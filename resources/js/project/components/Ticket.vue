@@ -11,7 +11,9 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item active">
-                                <router-link to="/add_event" class="btn btn-block btn-success">Descarga Masiva</router-link>
+                                <a :href="`/excel/${this.$route.params.id}`" class="btn btn-block btn-success">
+                                    Descarga Masiva
+                                </a>
                             </li>
                         </ol>
                     </div>
