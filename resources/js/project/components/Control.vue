@@ -90,9 +90,11 @@ export default {
             })
         },
         deleteControl(id) {
-            this.$axios.delete('api/control/'+id).then((res) => {
-                this.listPage();
-            })
+            if (confirm("¿Estás seguro de que deseas eliminar el registro?")) {
+                this.$axios.delete('api/control/'+id).then((res) => {
+                    this.listPage();
+                })
+            }
         },
         async getUser() {
             try {

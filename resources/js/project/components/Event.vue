@@ -95,9 +95,11 @@ export default {
             })
         },
         deleteEvent(id) {
-            this.$axios.delete('api/event/'+id).then((res) => {
-                this.listPage();
-            })
+            if (confirm("¿Estás seguro de que deseas eliminar el registro?")) {
+                this.$axios.delete('api/event/'+id).then((res) => {
+                    this.listPage();
+                })
+            }
         }
     },
     async mounted() {

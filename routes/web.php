@@ -9,6 +9,7 @@ use App\Http\Controllers\OrganizatorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\SecurityController;
+use App\Http\Controllers\ExcelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +42,9 @@ Route::get('/ticket/check/{token}', function () {
 });
 
 Route::get('/pdf/{id}', [PdfController::class, 'generatePdf']);
-                
+
+Route::get('/excel', [ExcelController::class, 'generateExcel']);
+     
 Route::middleware(['auth', 'checkrol:1'])->group(function () {
     Route::get('/team', function () {
         return view('home');

@@ -17,9 +17,16 @@
 			max-width: 500px;
 			margin: auto;
 		}
-		h1, h2 {
-			text-align: center;
+		h1 {
+			font-size: 50px !important;
 		}
+		h1, h2, h3 {
+			text-align: center;
+		},
+		h2 {
+			color: red;
+			font-size: 40px !important;
+		},
 		.event-info {
 			display: flex;
 			justify-content: space-between;
@@ -45,25 +52,11 @@
 </head>
 <body>
 	<div class="ticket">
-        <div class="logo">
-			<img src="{{ url('/template/dist/img/logo.jpg') }}" alt="Logo de la Empresa">
-		</div>
-		<h1>Ticket de Evento</h1>
-		<h2>Nombre del Evento</h2>
-		<div class="event-info">
-			<div>
-				<p>Fecha: {{ url('/template/dist/img/logo.jpg') }}</p>
-				<p>Hora:</p>
-			</div>
-			<div>
-				<p>Lugar:</p>
-				<p>Dirección:</p>
-			</div>
-		</div>
-		<div class="qr-code">
-			<img src="ruta/qr-code.png" alt="Código QR del Ticket">
-		</div>
-		
+        @foreach($qr_data as $qrCode)
+            <div class="qr-code">
+                <img src="data:image/png;base64,{{ base64_encode($qrCode) }}" alt="QR Code">
+            </div>
+        @endforeach
 	</div>
 </body>
 </html>
