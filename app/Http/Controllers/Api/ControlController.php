@@ -73,7 +73,7 @@ class ControlController extends Controller
     {
         $id = $request->segment(3);
 
-        $control_event = ControlEvent::where('control_id', '=', $id)->count();
+        $control_event = ControlEvent::where('cntrol_id', '=', $id)->count();
 
         if ($control_event == 0) {
             return response()->json([
