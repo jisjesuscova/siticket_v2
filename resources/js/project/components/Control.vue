@@ -33,10 +33,17 @@
                                     <o-table-column field="name" label="Nombre Completo" v-slot="p">
                                         {{ p.row.name }}  
                                     </o-table-column>
+                                    <o-table-column field="event_name" label="Nombre del Evento" v-slot="p">
+                                        {{ p.row.event_name }}  
+                                    </o-table-column>
+                                    <o-table-column field="status_id" label="" v-slot="p">
+                                        <span class="badge badge-success" v-if="p.row.status_id == 1">Activado</span>
+                                        <span class="badge badge-secondary" v-else>Desactivado</span>
+                                    </o-table-column>
                                     <o-table-column field="" label="" v-slot="p">
                                         <div class="btn-group">
-                                            <router-link :to="`/control/${p.row.id}`" class="btn btn-success mr-2">
-                                                <i class="fa-solid fa-eye"></i>
+                                            <router-link :to="`/control/edit/${p.row.id}`" class="btn btn-success mr-2">
+                                                <i class="fa-solid fa-pencil"></i>
                                             </router-link>
                                             <o-button variant="danger" @click="deleteControl(p.row.id)">
                                                 <i class="fa-solid fa-trash"></i>

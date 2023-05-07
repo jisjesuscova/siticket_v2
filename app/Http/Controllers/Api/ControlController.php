@@ -8,6 +8,7 @@ use App\Models\ControlEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreControlEventRequest;
+use DB;
 
 class ControlController extends Controller
 {
@@ -55,8 +56,12 @@ class ControlController extends Controller
      */
     public function show($id)
     {
-        $controls = User::where('rol_id', '=', '3')->orderByDesc('id')
-             ->paginate(10);
+        $controls = DB::table('control_events')
+                    ->join('users', 'control_events.control_id', '=', 'users.id')
+                    ->join('events', 'control_events.event_id', '=', 'events.id')
+                    ->where('events.organizator_id', '=', $id)
+                    ->select('control_events.id', 'control_events.status_id', 'users.name', 'events.event_name')
+                    ->paginate(10);
 
         return response()->json([
             'success' => true,
@@ -99,9 +104,15 @@ class ControlController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Control $control)
+    public function update(Request $request, ControlEvent $control_event)
     {
-        //
+        $control_event->status_id = $request->status_id;
+        $control_event->update();
+
+        return response()->json([
+            'success' => true,
+            'data' => $control_event
+        ], 200);
     }
 
     /**
@@ -111,6 +122,13 @@ class ControlController extends Controller
     {
         $user = User::find($id);
         $user->delete();
+
+        $control_events = ControlEvent::where('control_id', '=', $id);
+
+        foreach ($control_events as $control_event) {
+            $control_event = ControlEvent::find($control_event->id);
+            $control_event->delete();
+        }
 
         return response()->json([
             'success' => true,

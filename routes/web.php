@@ -37,6 +37,10 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/control/edit/{id}', function () {
+    return view('home');
+});
+
 Route::get('/ticket/check/{token}', function () {
     return view('home');
 });

@@ -10,6 +10,7 @@ import Ticket from './components/Ticket.vue'
 import Control from './components/Control.vue'
 import AddControl from './components/AddControl.vue'
 import QrCode from './components/QrCode.vue'
+import EditControl from './components/EditControl.vue'
 
 const routes = [
     {
@@ -81,6 +82,11 @@ const routes = [
         name:'qr_code',
         path:'/qr_code',
         component: QrCode
+    },
+    {
+        name:'edit_control',
+        path:'/control/edit/:id',
+        component: EditControl
     }
 ]
 
