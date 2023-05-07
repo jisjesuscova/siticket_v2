@@ -61,7 +61,7 @@ class ControlController extends Controller
                     ->join('users', 'control_events.control_id', '=', 'users.id')
                     ->join('events', 'control_events.event_id', '=', 'events.id')
                     ->where('events.organizator_id', '=', $id)
-                    ->select('control_events.id', 'control_events.status_id', 'users.name', 'events.event_name')
+                    ->select('control_events.id', 'control_events.control_id', 'control_events.status_id', 'users.name', 'events.event_name')
                     ->paginate(10);
 
         return response()->json([

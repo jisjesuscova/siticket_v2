@@ -42,10 +42,10 @@
                                     </o-table-column>
                                     <o-table-column field="" label="" v-slot="p">
                                         <div class="btn-group">
-                                            <router-link :to="`/control/edit/${p.row.id}`" class="btn btn-success mr-2">
+                                            <router-link :to="`/control/edit/${p.row.control_id}`" class="btn btn-success mr-2">
                                                 <i class="fa-solid fa-pencil"></i>
                                             </router-link>
-                                            <o-button variant="danger" @click="deleteControl(p.row.id)">
+                                            <o-button variant="danger" @click="deleteControl(p.row.control_id)">
                                                 <i class="fa-solid fa-trash"></i>
                                             </o-button>
                                         </div>
