@@ -54,7 +54,7 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function check($id)
+    public function check(Request $request)
     {
         $id = $request->segment(4);
 
