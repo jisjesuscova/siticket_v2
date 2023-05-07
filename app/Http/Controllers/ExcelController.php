@@ -20,6 +20,8 @@ class ExcelController extends Controller
         // Obtén los tickets desde la base de datos (ajusta la consulta según tus necesidades)
         $tickets = Ticket::where('event_id', '=', $id)->get();
 
+        $event = Event::find($id);
+
         // Recorre los tickets e inserta el código QR en cada fila
         $row = 1;
         foreach ($tickets as $ticket) {
@@ -43,7 +45,7 @@ class ExcelController extends Controller
         $writer = new Xlsx($spreadsheet);
 
         // Preparar la respuesta como un archivo descargable
-        $fileName = 'generated_excel_with_qr_codes.xlsx';
+        $fileName = 'qr_evento_' . $event->event_name . '.xlsx';
         $headers = [
             'Content-Type' => 'application/vnd.ms-excel',
             'Content-Disposition' => 'attachment;filename="' . $fileName . '"',
