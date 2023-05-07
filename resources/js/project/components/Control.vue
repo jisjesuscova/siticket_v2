@@ -99,8 +99,17 @@ export default {
         deleteControl(id) {
             if (confirm("¿Estás seguro de que deseas eliminar el registro?")) {
                 this.$axios.delete('api/control/'+id).then((res) => {
-                    this.listPage();
+                    
                 })
+
+                axios.get('/session-data')
+                .then(response => {
+                    this.id = response.data.id;
+                    this.listPage(this.id); // pasa this.id a listPage()
+                })
+                .catch(error => {
+                    console.log(error);
+                });
             }
         },
         async getUser() {
