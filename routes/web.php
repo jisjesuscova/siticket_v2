@@ -86,6 +86,10 @@ Route::middleware(['auth', 'checkrol:2'])->group(function () {
         return view('home');
     });
 
+    Route::get('/ticket/{id}', function () {
+        return view('home');
+    });
+
     Route::get('/organizator', [OrganizatorController::class, 'index']);
 });
 
