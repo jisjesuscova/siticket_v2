@@ -36,7 +36,7 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/show_ticket/{token}', function () {
+Route::get('/ticket/check/{token}', function () {
     return view('home');
 });
 
