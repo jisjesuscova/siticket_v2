@@ -41,7 +41,7 @@ export default defineComponent({
     async function validateControler(id, value) {
       try {
         const response = await axios.get(`api/control/status/${id}`);
-
+        console.log(response.data);
         if (response.data == 1)  {
             this.$router.push('/show_ticket/' + value);
         } else {
