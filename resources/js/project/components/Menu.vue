@@ -10,37 +10,37 @@
                     <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <router-link to="/home" class="nav-link active">
+                        <router-link to="/home" class="nav-link active" data-widget="pushmenu" @click="toggleSidebar">
                             <i class="nav-icon fas fa-home"></i>
                             Inicio
                         </router-link>
                     </li>
                     <li class="nav-item" v-if="rol_id == 1">
-                        <router-link to="/team" class="nav-link">
+                        <router-link to="/team" class="nav-link" data-widget="pushmenu" @click="toggleSidebar">
                             <i class="nav-icon fas fa-people-group"></i>
                             Equipos
                         </router-link>
                     </li>
                     <li class="nav-item" v-if="rol_id == 2">
-                        <router-link to="/event" class="nav-link">
+                        <router-link to="/event" class="nav-link" data-widget="pushmenu" @click="toggleSidebar">
                             <i class="nav-icon far fa-calendar-days"></i>
                             Eventos
                         </router-link>
                     </li>
                     <li class="nav-item" v-if="rol_id == 2">
-                        <router-link to="/control" class="nav-link">
+                        <router-link to="/control" class="nav-link" data-widget="pushmenu" @click="toggleSidebar">
                             <i class="nav-icon fas fa-lock"></i>
                             Controladores
                         </router-link>
                     </li>
                     <li class="nav-item" v-if="rol_id == 3">
-                        <router-link to="/qr_code" class="nav-link">
+                        <router-link to="/qr_code" class="nav-link" data-widget="pushmenu" @click="toggleSidebar">
                             <i class="nav-icon fas fa-qrcode"></i>
                             Lector
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/setting" class="nav-link">
+                        <router-link to="/setting" class="nav-link" data-widget="pushmenu" @click="toggleSidebar">
                             <i class="nav-icon fas fa-user"></i>
                             Perfil
                         </router-link>
@@ -65,14 +65,18 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            rol_id: ''
+            rol_id: '',
+            sidebarVisible: true
+        }
+    },
+    methods: {
+        toggleSidebar() {
+            const pushMenuBtn = this.$refs.pushMenuBtn;
+
+            $(pushMenuBtn).PushMenu('toggle');
         }
     },
     mounted() {
-        const body = document.querySelector('body');
-        body.classList.add('sidebar-mini');
-        body.classList.add('sidebar-collapse');
-
         axios.get('/session-data')
         .then(response => {
             this.rol_id = response.data.rol_id;
