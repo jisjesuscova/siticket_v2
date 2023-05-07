@@ -52,6 +52,32 @@ class TicketController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     */
+    public function check($id)
+    {
+        $id = $request->segment(4);
+
+        $ticket_qty = Ticket::where('token', $id)->where('status_id', '=', 0)->count();
+
+        if ($ticket_qty == 1) {
+            $ticket = Ticket::where('token', $id)->where('status_id', '=', 0)->count();
+            $ticket->status_id = 1;
+            $ticket->save();
+
+            return response()->json([
+                'success' => false,
+                'data' => 1
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'data' => 0
+            ], 200);
+        }
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Ticket $ticket)

@@ -29,3 +29,4 @@ Route::resource('ticket', TicketController::class)->except(['create', 'edit']);
 Route::resource('control', ControlController::class)->except(['create', 'edit']);
 Route::get('event/all/{id}', 'App\Http\Controllers\Api\EventController@index');
 Route::get('control/status/{id}', 'App\Http\Controllers\Api\ControlController@status');
+Route::get('ticket/check/{id}', 'App\Http\Controllers\Api\TicketController@check');
