@@ -125,7 +125,7 @@ class ControlController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        $control_events = ControlEvent::where('control_id', '=', $id);
+        $control_events = ControlEvent::where('contol_id', '=', $id);
 
         foreach ($control_events as $control_event) {
             $control_event = ControlEvent::find($control_event->id);
