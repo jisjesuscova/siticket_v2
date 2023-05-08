@@ -108,12 +108,6 @@ class ControlController extends Controller
     public function update(Request $request, $id)
     {   
         $control_event = ControlEvent::find($id);
-        
-        if ($request->status_id == 0) {
-            $status_id = 0;
-        } else {
-            $status_id = 1;
-        }
 
         $control_event->status_id = $status_id;
         $control_event->update();
