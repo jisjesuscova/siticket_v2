@@ -21,7 +21,7 @@
                                 <div v-if="status === 0" class="alert alert-danger text-center" role="alert">
                                     <h3><i class="fa-solid fa-circle-exclamation"></i> Entrada denegada</h3>
                                 </div>
-                                <router-link to="/qr_code" class="btn btn-block btn-primary">Validar Nueva Entrada</router-link>
+                                <router-link to="/qr_code" class="btn btn-block btn-warning">Validar Nueva Entrada</router-link>
                             </center>
                         </div>
                     </div>
