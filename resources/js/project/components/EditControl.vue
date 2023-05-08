@@ -15,7 +15,7 @@
                                         <o-select v-model="form.status_id" model-value="" expanded>
                                             <option value="" selected disabled> - Seleccionar - </option>
                                             <option value="1"> Habilitar </option>
-                                            <option value="2"> Deshabilitar </option>
+                                            <option value="0"> Deshabilitar </option>
                                         </o-select>
                                     </o-field>
                                 </div>
