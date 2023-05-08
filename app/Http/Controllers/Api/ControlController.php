@@ -108,9 +108,8 @@ class ControlController extends Controller
     public function update(Request $request, $id)
     {   
         $control_event = ControlEvent::where('control_id', '=', $id);
-
         $control_event->status_id = $request->status_id;
-        $control_event->save();
+        $control_event->update();
 
         return response()->json([
             'success' => true,
