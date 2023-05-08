@@ -48,6 +48,8 @@ Route::get('/ticket/check/{token}', function () {
 Route::get('/pdf/{id}', [PdfController::class, 'generatePdf']);
 
 Route::get('/excel/{id}', [ExcelController::class, 'generateExcel']);
+
+Route::get('/excel/token/{id}', [ExcelController::class, 'generateTokenExcel']);
      
 Route::middleware(['auth', 'checkrol:1'])->group(function () {
     Route::get('/team', function () {

@@ -11,8 +11,12 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item active">
+                                <a :href="`/excel/token/${this.$route.params.id}`" class="btn btn-block btn-warning">
+                                    Descarga Masiva Token
+                                </a>
+
                                 <a :href="`/excel/${this.$route.params.id}`" class="btn btn-block btn-success">
-                                    Descarga Masiva
+                                    Descarga Masiva Qr
                                 </a>
                             </li>
                         </ol>
