@@ -7,6 +7,7 @@ use App\Models\Ticket;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\Event;
+use App\Models\ControlEvent;
 
 class TicketController extends Controller
 {
