@@ -109,7 +109,7 @@ class ControlController extends Controller
     {   
         $control_event = ControlEvent::where('control_id', '=', $id);
 
-        $control_event->status_id = $status_id;
+        $control_event->status_id = $request->status_id;
         $control_event->update();
 
         return response()->json([
