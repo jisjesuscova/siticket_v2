@@ -35,30 +35,23 @@
 export default {
     data() {
         return {
-            status: null
+            status: null,
+            id: ''
         }
     },
     methods: {
-        async checkTicket(id) {
-            const response = await axios.get(`api/control/status/${id}`);
-
-            if (response.data.data == 1)  {
-                this.$axios.get('/api/ticket/check/'+ this.$route.params.id).then((res) => {
-                    this.status = res.data.data;
-                });
-            } else {
-                alert('Usted no tiene los permisos para validar la entrada');
-            }
+        checkTicket(id) {
+            this.$axios.get('/api/ticket/check/'+ this.$route.params.id + '/' + id).then((res) => {
+                this.status = res.data.data;
+            })
         }
     },
     async mounted() {
-        this.checkTicket();
-
         axios.get('/session-data')
         .then(response => {
             this.id = response.data.id;
 
-            this.checkTicket(id);
+            this.checkTicket(this.id);
         })
         .catch(error => {
             console.log(error);

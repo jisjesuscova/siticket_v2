@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Models\Event;
 
 class TicketController extends Controller
 {
@@ -57,18 +58,29 @@ class TicketController extends Controller
     public function check(Request $request)
     {
         $id = $request->segment(4);
+        $user_id = $request->segment(5);
 
         $ticket_qty = Ticket::where('token', '=', $id)->where('status_id', '=', 0)->count();
 
         if ($ticket_qty >= 1) {
             $ticket = Ticket::where('token', $id)->where('status_id', '=', 0)->first();
-            $ticket->status_id = 1;
-            $ticket->save();
 
-            return response()->json([
-                'success' => true,
-                'data' => 1
-            ], 200);
+            $control_event = ControlEvent::where('control_id', '=', $user_id)->where('event_id', $ticket->event_id)->first();
+
+            if ($control_event->status_id == 1) {
+                $ticket->status_id = 1;
+                $ticket->update();
+    
+                return response()->json([
+                    'success' => true,
+                    'data' => 1
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'data' => 0
+                ], 200);
+            }
         } else {
             return response()->json([
                 'success' => true,
