@@ -106,10 +106,16 @@ class ControlController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-    {   echo $id;
-        die();
+    {   
         $control_event = ControlEvent::find($id);
-        $control_event->status_id = $request->status_id;
+        
+        if ($request->status_id == 0) {
+            $status_id = 0;
+        } else {
+            $status_id = 1;
+        }
+
+        $control_event->status_id = $status_id;
         $control_event->update();
 
         return response()->json([
