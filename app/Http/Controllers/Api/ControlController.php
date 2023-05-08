@@ -107,6 +107,8 @@ class ControlController extends Controller
      */
     public function update(Request $request, $id)
     {
+        echo $request->status_id;
+        die();
         $control_event = ControlEvent::find($id);
         $control_event->status_id = $request->status_id;
         $control_event->update();
